@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/project")
-@CrossOrigin(origins = {
+@CrossOrigin(allowedOriginPatterns = {
             "*"
         },
         allowedHeaders = "*",
