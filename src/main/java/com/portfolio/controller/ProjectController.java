@@ -21,7 +21,7 @@ import java.util.List;
             "*"
         },
         allowedHeaders = "*",
-        allowCredentials = "*",
+        allowCredentials = "true",
         maxAge = 15 * 60,
         methods = {
             RequestMethod.GET,

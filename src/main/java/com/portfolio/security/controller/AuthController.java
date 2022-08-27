@@ -36,11 +36,13 @@ import java.util.Set;
             "*"
         },
         allowedHeaders = "*",
-        allowCredentials = "false",
+        allowCredentials = "true",
         maxAge = 15 * 60,
         methods = {
             RequestMethod.GET,
-            RequestMethod.POST
+            RequestMethod.POST,
+            RequestMethod.PUT,
+            RequestMethod.DELETE
         })
 public class AuthController {
 
