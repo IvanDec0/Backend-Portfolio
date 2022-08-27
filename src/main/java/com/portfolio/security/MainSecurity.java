@@ -81,7 +81,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
         cc.setExposedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"));
         cc.setAllowedOrigins(Arrays.asList("/*"));
         cc.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "PUT","PATCH"));
-        cc.addAllowedOrigin("*");
+        cc.addAllowedOriginPattern("*");
         cc.setMaxAge(Duration.ZERO);
         cc.setAllowCredentials(Boolean.TRUE);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
