@@ -1,12 +1,14 @@
 package com.portfolio.security.service;
 
 import com.portfolio.entity.Experience;
+import com.portfolio.entity.Project;
 import com.portfolio.security.repository.UsuarioRepository;
 import com.portfolio.security.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,6 +17,10 @@ public class UsuarioService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
+
+    public List<Usuario> list(){
+        return usuarioRepository.findAll();
+    }
 
     public Optional<Usuario> getByNombreUsuario(String nombreUsuario){
         return usuarioRepository.findByNombreUsuario(nombreUsuario);
@@ -33,10 +39,6 @@ public class UsuarioService {
 
     public boolean existsById(int id){
         return usuarioRepository.existsById(id);
-    }
-
-    public boolean existsByEmail(String email){
-        return usuarioRepository.existsByEmail(email);
     }
 
     public void save(Usuario usuario){

@@ -1,8 +1,7 @@
 package com.portfolio.security.controller;
 
-import com.portfolio.dto.ExperienceDto;
+
 import com.portfolio.dto.Mensaje;
-import com.portfolio.entity.Experience;
 import com.portfolio.security.dto.JwtDto;
 import com.portfolio.security.dto.LoginUsuario;
 import com.portfolio.security.entity.Rol;
@@ -28,11 +27,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
 public class AuthController {
 
     @Autowired
@@ -50,19 +50,18 @@ public class AuthController {
     @Autowired
     JwtProvider jwtProvider;
 
-    @PreAuthorize("hasRole('ADMIN')")
+
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return new ResponseEntity(new Mensaje("campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
         if(usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario()))
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        if(usuarioService.existsByEmail(nuevoUsuario.getEmail()))
-            return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
+
         Usuario usuario =
-                new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(), nuevoUsuario.getEmail(),
-                        passwordEncoder.encode(nuevoUsuario.getPassword()), nuevoUsuario.getTitle(), nuevoUsuario.getParrafo(),
-                        nuevoUsuario.getUrl(),nuevoUsuario.getGithub(), nuevoUsuario.getLinkedin());
+                new Usuario(nuevoUsuario.getNombreUsuario(),
+                        passwordEncoder.encode(nuevoUsuario.getPassword()));
         Set<Rol> roles = new HashSet<>();
         if(nuevoUsuario.getRoles().contains("admin"))
             roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
@@ -78,15 +77,8 @@ public class AuthController {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
 
         Usuario usuario = usuarioService.getOne(id).get();
-        usuario.setNombre(nuevoUsuario.getNombre());
         usuario.setNombreUsuario(nuevoUsuario.getNombreUsuario());
-        usuario.setEmail(nuevoUsuario.getEmail());
         usuario.setPassword(passwordEncoder.encode(nuevoUsuario.getPassword()));
-        usuario.setTitle(nuevoUsuario.getTitle());
-        usuario.setParrafo(nuevoUsuario.getParrafo());
-        usuario.setUrl(nuevoUsuario.getUrl());
-        usuario.setGithub(nuevoUsuario.getGithub());
-        usuario.setLinkedin(nuevoUsuario.getLinkedin());
 
         usuarioService.save(usuario);
         return new ResponseEntity(new Mensaje("usuario actualizado"), HttpStatus.OK);

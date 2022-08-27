@@ -9,6 +9,7 @@
         <module name="crud" />
         <module name="Backend" />
         <module name="backend-portfolio" />
+        <module name="Backend-Portfolio" />
         <module name="tutorial_jwt_BACK-master" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Backend" options="-parameters" />
+      <module name="Backend-Portfolio" options="-parameters" />
       <module name="backend-portfolio" options="-parameters" />
       <module name="crud" options="-parameters" />
       <module name="tutorial_jwt_BACK-master" options="-parameters" />

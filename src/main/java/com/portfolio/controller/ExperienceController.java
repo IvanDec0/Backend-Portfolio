@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/experience")
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
 public class ExperienceController {
 
     @Autowired

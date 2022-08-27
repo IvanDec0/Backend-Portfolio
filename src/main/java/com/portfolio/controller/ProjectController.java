@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/project")
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
 public class ProjectController {
 
     @Autowired

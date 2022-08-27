@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/skill")
-@CrossOrigin(origins = {"http://localhost:4200"})
+@RequestMapping("/skills")
+@CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
 public class SkillController {
     @Autowired
     SkillService skillService;
