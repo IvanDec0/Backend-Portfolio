@@ -19,11 +19,13 @@ import java.util.List;
             "*"
         },
         allowedHeaders = "*",
-        allowCredentials = "false",
+        allowCredentials = "*",
         maxAge = 15 * 60,
         methods = {
             RequestMethod.GET,
-            RequestMethod.POST
+            RequestMethod.POST,
+            RequestMethod.PUT,
+            RequestMethod.DELETE
         })
 public class ExperienceController {
 
