@@ -17,18 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/project")
-@CrossOrigin(allowedOriginPatterns = {
-            "*"
-        },
-        allowedHeaders = "*",
-        allowCredentials = "true",
-        maxAge = 15 * 60,
-        methods = {
-            RequestMethod.GET,
-            RequestMethod.POST,
-            RequestMethod.PUT,
-            RequestMethod.DELETE
-        })
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProjectController {
 
     @Autowired
