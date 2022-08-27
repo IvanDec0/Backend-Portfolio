@@ -16,7 +16,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/skill")
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {
+            "*"
+        },
+        allowedHeaders = "*",
+        allowCredentials = "false",
+        maxAge = 15 * 60,
+        methods = {
+            RequestMethod.GET,
+            RequestMethod.POST
+        })
 public class SkillController {
     @Autowired
     SkillService skillService;

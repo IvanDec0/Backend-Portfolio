@@ -15,7 +15,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/experience")
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {
+            "*"
+        },
+        allowedHeaders = "*",
+        allowCredentials = "false",
+        maxAge = 15 * 60,
+        methods = {
+            RequestMethod.GET,
+            RequestMethod.POST
+        })
 public class ExperienceController {
 
     @Autowired

@@ -32,7 +32,16 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {
+            "*"
+        },
+        allowedHeaders = "*",
+        allowCredentials = "false",
+        maxAge = 15 * 60,
+        methods = {
+            RequestMethod.GET,
+            RequestMethod.POST
+        })
 public class AuthController {
 
     @Autowired
