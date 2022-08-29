@@ -22,9 +22,9 @@ public class CreateRoles implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+/**
         Rol rolAdmin = new Rol(RolNombre.ROLE_ADMIN);
         rolService.save(rolAdmin);
-
+**/
     }
 }
