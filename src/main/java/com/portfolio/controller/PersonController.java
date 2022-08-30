@@ -67,7 +67,7 @@ public class PersonController {
                 personDto.getGithub(),
                 personDto.getLinkedin());
         personService.save(person);
-        return new ResponseEntity(new Mensaje("experiencia creada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("persona creada"), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -96,7 +96,7 @@ public class PersonController {
         person.setGithub(personDto.getGithub());
         person.setLinkedin(personDto.getLinkedin());
         personService.save(person);
-        return new ResponseEntity(new Mensaje("experiencia actualizada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("persona actualizada"), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -105,6 +105,6 @@ public class PersonController {
         if (!personService.existsById(id))
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         personService.delete(id);
-        return new ResponseEntity(new Mensaje("experiencia eliminada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("persona eliminada"), HttpStatus.OK);
     }
 }

@@ -10,6 +10,7 @@
         <module name="Backend" />
         <module name="backend-portfolio" />
         <module name="Backend-Portfolio" />
+        <module name="portfolio" />
         <module name="tutorial_jwt_BACK-master" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
       <module name="Backend-Portfolio" options="-parameters" />
       <module name="backend-portfolio" options="-parameters" />
       <module name="crud" options="-parameters" />
+      <module name="portfolio" options="-parameters" />
       <module name="tutorial_jwt_BACK-master" options="-parameters" />
     </option>
   </component>
